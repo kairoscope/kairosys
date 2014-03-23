@@ -40,28 +40,34 @@
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Kairoscope</a>
-          <div class="container nav-collapse">
+		  <%= link_to image_tag(('kairoscope_logo_web.png'), :style => "margin-left: 2px; margin-top: -2px; position: absolute; width: 200px"), 
+		              root_path, :class => "brand", :style => "width: 200px;" %>
+          <div class="container-fluid nav-collapse" style="margin-top: 10px;">
             <ul class="nav">
 			  <li class="dropdown">
 			  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Projetos <b class="caret"></b></a>
 			  	<ul class="dropdown-menu">
-              	  	<li><%= link_to "Onda Solar", "/path2"  %></li>
+              	  	<li><%= link_to "Onda Solar", "/path2", :class => "menu" %></li>
               	  	<li><%= link_to "Bike&", "/path2"  %></li>
 			  	</ul>
 			  </li>
 			  <li><%= link_to "Blog", posts_path  %></li>
-			  <li><%= link_to "Quem Somos", "/path1"  %></li>
+			  <li><%= link_to "Sobre", "/path1"  %></li>
 			  <li><%= link_to "Contato", "/path2"  %></li>
             </ul>
 			<ul class="nav pull-right">
 				<% if user_signed_in? %>
+					<li>
+						<% if params[:controller] == "posts" && params[:action] != "list" %>
+					  	  <%= link_to "editar", posts_list_path, :class => 'btn btn-primary btn-mini menu-btn', :style => "height: 20px; padding: 5px; color: white; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);" %>
+						 <% end %>
+					</li>
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
 				    	<ul class="dropdown-menu">
@@ -79,27 +85,16 @@
       </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-          <div class="span9">
+    <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span12">
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
-          <div class="span3">
-            <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
-              <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
-              </ul>
-            </div><!--/.well -->
-          </div><!--/span-->
         </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>&copy; Kairoscope 2014</p>
       </footer>
 
     </div> <!-- /container -->
