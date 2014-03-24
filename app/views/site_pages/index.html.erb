@@ -1,0 +1,32 @@
+<%- model_class = SitePage -%>
+
+<div class="page-header">
+  <h1>Páginas do Site
+  </h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:content) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @site_pages.each do |site_page| %>
+      <tr>
+        <td><%= site_page.title %></td>
+        <td><%= site_page.content %></td>
+        <td><%= site_page.created_at %></td>
+        <td>
+		  <%= link_to 'Show', site_page_path(site_page), :class => 'btn btn-mini' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_site_page_path(site_page), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

@@ -1,4 +1,11 @@
 KairoscopeSys::Application.routes.draw do
+  
+  get 'sobre' => 'site_pages#sobre'
+  get 'sobre/editar' => 'site_pages#edit_sobre'
+  get 'contato' => 'site_pages#contato'
+  get 'contato/editar' => 'site_pages#edit_contato'
+  resources :site_pages
+
   devise_for :users
   get 'posts/list' => 'posts#list'
   resources :posts
