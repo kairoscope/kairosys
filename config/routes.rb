@@ -1,5 +1,6 @@
 KairoscopeSys::Application.routes.draw do
   
+  get 'admin' => 'site_pages#admin'
   get 'sobre' => 'site_pages#sobre'
   get 'sobre/editar' => 'site_pages#edit_sobre'
   get 'contato' => 'site_pages#contato'
@@ -67,5 +68,5 @@ KairoscopeSys::Application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => "posts#index"
+  root :to => "site_pages#index"
 end

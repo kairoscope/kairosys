@@ -1,0 +1,39 @@
+<%- model_class = SitePage -%>
+
+<div class="page-header">
+  <h1>Váriaveis do sistema <%= link_to 'Nova variavel', new_site_page_path, :class => 'btn btn-mini btn-primary' %>
+  </h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+	  <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:content) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @site_pages.each do |site_page| %>
+      <tr>
+		<td><%= site_page.id %></td>
+        <td><%= truncate( site_page.title, :length => 60, :omission => '...') %></td>
+        <td><%= truncate( site_page.content, :length => 60, :omission => '...')  %></td>
+        <td><%= site_page.created_at %></td>
+        <td>
+		  <%= link_to 'Ver', site_page_path(site_page), :class => 'btn btn-mini' %>
+          <%= link_to 'editar',
+                      edit_site_page_path(site_page), :class => 'btn btn-mini' %>
+          <%= link_to 'deletar',
+                      site_page_path(site_page),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

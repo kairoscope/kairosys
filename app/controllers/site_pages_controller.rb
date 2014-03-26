@@ -4,7 +4,13 @@ class SitePagesController < ApplicationController
   # GET /site_pages
   # GET /site_pages.json
   def index
-    @site_pages = SitePage.all
+    @site_pages = SitePage.order(created_at: :asc).all
+    @posts = Post.all
+  end
+  
+  def admin
+    @site_pages = SitePage.order(created_at: :asc).all
+    @posts = Post.all
   end
 
   # GET /site_pages/1
@@ -48,8 +54,8 @@ class SitePagesController < ApplicationController
 
     respond_to do |format|
       if @site_page.save
-        format.html { redirect_to @site_page, notice: 'Site page was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @site_page }
+        format.html { redirect_to admin_path, notice: 'Variable was successfully created.' }
+        format.json { render action: 'admin', status: :created, location: @site_page }
       else
         format.html { render action: 'new' }
         format.json { render json: @site_page.errors, status: :unprocessable_entity }
@@ -62,13 +68,8 @@ class SitePagesController < ApplicationController
   def update
     respond_to do |format|
       if @site_page.update(site_page_params)
-        if @site_page.id == 0
-         format.html { redirect_to sobre_path, notice: 'Site page was successfully updated.' }
-         format.json { head :no_content }
-        else @site_page.id == 1
-         format.html { redirect_to contato_path, notice: 'Site page was successfully updated.' }
-         format.json { head :no_content }
-       end
+        format.html { redirect_to admin_path, notice: 'Variable was successfully updated.' }
+        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @site_page.errors, status: :unprocessable_entity }
@@ -81,7 +82,7 @@ class SitePagesController < ApplicationController
   def destroy
     @site_page.destroy
     respond_to do |format|
-      format.html { redirect_to site_pages_url }
+      format.html { redirect_to admin_path, notice: 'Variable was deleted.'  }
       format.json { head :no_content }
     end
   end

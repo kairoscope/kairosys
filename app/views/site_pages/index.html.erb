@@ -1,32 +1,41 @@
 <%- model_class = SitePage -%>
 
-<div class="page-header">
-  <h1>Páginas do Site
-  </h1>
+		<div class="span12">
+		    <div class="thumbnail">
+				<% feature_image = @site_pages[2].content %>
+				<%= image_tag(feature_image) %>
+
+			  <div class="thumbnail-content">
+		      	<p><%= @site_pages[3].content %></p>
+			  </div>
+		    </div>
+		</div>
+	</div>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:content) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @site_pages.each do |site_page| %>
-      <tr>
-        <td><%= site_page.title %></td>
-        <td><%= site_page.content %></td>
-        <td><%= site_page.created_at %></td>
-        <td>
-		  <%= link_to 'Show', site_page_path(site_page), :class => 'btn btn-mini' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_site_page_path(site_page), :class => 'btn btn-mini' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<div class="row-fuild">
+	<div class="page-header" style="text-align: center; margin-top: 35px; padding-bottom: 0px;">
+		 <h2 style="margin-bottom: 5px;">Últimos Posts</h1>
+	</div>
+</div>
 
 
+	<% counter = 0 %>
+	<ul class="thumbnails" style="margin-left: 0px;">
+		<div class="row-fluid">
+		<% @posts.each do |post| %>
+			<% if counter < 3 %>
+				<li class="span4">
+				    <div class="thumbnail">
+						<%= link_to image_tag("http://placehold.it/1200x780"), url_for(post) %>
+      
+					  <div class="thumbnail-content">
+				      	<h3><%= link_to post.title, post_path(post) %></h3>
+				      	<p><%= post.content %></p>
+					  </div>
+				    </div>
+				</li>
+				<% counter = counter + 1 %>
+			<% end %>
+		<% end %>
+	</ul>
