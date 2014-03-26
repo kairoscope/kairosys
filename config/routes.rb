@@ -1,5 +1,6 @@
 KairoscopeSys::Application.routes.draw do
   
+  get 'credentials' => 'site_pages#credentials'
   get 'admin' => 'site_pages#admin'
   get 'sobre' => 'site_pages#sobre'
   get 'sobre/editar' => 'site_pages#edit_sobre'

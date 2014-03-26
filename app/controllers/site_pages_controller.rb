@@ -1,5 +1,6 @@
 class SitePagesController < ApplicationController
   before_action :set_site_page, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_user, except: [:index, :sobre, :contato, :credentials]
 
   # GET /site_pages
   # GET /site_pages.json
@@ -36,6 +37,9 @@ class SitePagesController < ApplicationController
   def edit_contato
     @site_page = SitePage.find(2)
     render action: 'edit'
+  end
+  
+  def credentials
   end
 
   # GET /site_pages/new
