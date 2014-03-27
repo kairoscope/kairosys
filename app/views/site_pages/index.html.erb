@@ -27,11 +27,11 @@
 			<% if counter < 3 %>
 				<li class="span4">
 				    <div class="thumbnail">
-						<%= link_to image_tag("http://placehold.it/1200x780"), url_for(post) %>
+						<%= link_to image_tag(post.cover_image_url), url_for(post) %>
       
 					  <div class="thumbnail-content">
 				      	<h3><%= link_to post.title, post_path(post) %></h3>
-				      	<p><%= post.content %></p>
+				      	<p><%= post.description %></p>
 					  </div>
 				    </div>
 				</li>

@@ -1,31 +1,72 @@
 <%- model_class = SitePage -%>
 
+<%- model_class = Post -%>
 <div class="page-header">
-  <h1>Váriaveis do sistema <%= link_to 'Nova variavel', new_site_page_path, :class => 'btn btn-mini btn-primary' %>
-  </h1>
+  <h3>
+	  <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+	  <%= link_to "Novo Post",
+	              new_post_path,
+	              :class => 'btn btn-primary btn-mini' %>
+  </h3>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-	  <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:content) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th class="span1"><%= model_class.human_attribute_name(:id) %></th>
+      <th class="span4"><%= model_class.human_attribute_name(:title) %></th>
+      <th class="span6"><%= model_class.human_attribute_name(:description) %></th>
+      <th class="span2"><%= model_class.human_attribute_name(:created_at) %></th>
+      <th class="span3"><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.id, post_path(post) %></td>
+        <td><%= post.title %></td>
+        <td><%= post.description %></td>
+        <td><%= time_ago_in_words( post.created_at) %></td>
+        <td>
+		  <%= link_to 'Ver', post_path(post), :class => 'btn btn-mini' %>
+          <%= link_to "Editar",
+                      edit_post_path(post), :class => 'btn btn-mini' %>
+          <%= link_to "Deletar",
+                      post_path(post),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<div class="page-header" style="margin-top: 45px;">
+  <h3>Configurações <%= link_to 'Nova Váriavel', new_site_page_path, :class => 'btn btn-mini btn-primary' %></h3>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+	  <th class="span1"><%= model_class.human_attribute_name(:id) %></th>
+      <th class="span4"><%= model_class.human_attribute_name(:title) %></th>
+      <th class="span7"><%= model_class.human_attribute_name(:content) %></th>
+      <th class="span3"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @site_pages.each do |site_page| %>
       <tr>
 		<td><%= site_page.id %></td>
-        <td><%= truncate( site_page.title, :length => 60, :omission => '...') %></td>
-        <td><%= truncate( site_page.content, :length => 60, :omission => '...')  %></td>
-        <td><%= site_page.created_at %></td>
+        <td><%= truncate( site_page.title, :length => 40, :omission => '...') %></td>
+        <td><%= truncate( site_page.content, :length => 75, :omission => '...')  %></td>
         <td>
 		  <%= link_to 'Ver', site_page_path(site_page), :class => 'btn btn-mini' %>
-          <%= link_to 'editar',
+          <%= link_to 'Editar',
                       edit_site_page_path(site_page), :class => 'btn btn-mini' %>
-          <%= link_to 'deletar',
+          <%= link_to 'Deletar',
                       site_page_path(site_page),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },

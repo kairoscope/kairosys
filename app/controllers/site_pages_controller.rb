@@ -6,12 +6,12 @@ class SitePagesController < ApplicationController
   # GET /site_pages.json
   def index
     @site_pages = SitePage.order(created_at: :asc).all
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
   
   def admin
     @site_pages = SitePage.order(created_at: :asc).all
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   # GET /site_pages/1

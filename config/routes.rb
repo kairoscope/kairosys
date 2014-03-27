@@ -10,7 +10,8 @@ KairoscopeSys::Application.routes.draw do
 
   devise_for :users
   get 'posts/list' => 'posts#list'
-  resources :posts
+  
+  resources :posts, :path => :blog
   
   
 

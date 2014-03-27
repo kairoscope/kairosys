@@ -1,7 +1,8 @@
 <%- model_class = Post -%>
 
-<img src="http://placehold.it/1200x780" alt="">
-
+<% if @post.image_url %>
+	<img src="<%= @post.image_url %>" alt="">
+<% end %>
 <div class="page-header">
   <h1><%= @post.title %></h1>
 </div>
