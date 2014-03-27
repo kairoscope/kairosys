@@ -1,5 +1,7 @@
 KairoscopeSys::Application.routes.draw do
   
+  resources :projects, :path => :projetos
+
   get 'credentials' => 'site_pages#credentials'
   get 'admin' => 'site_pages#admin'
   get 'sobre' => 'site_pages#sobre'
