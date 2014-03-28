@@ -12,6 +12,7 @@ class SitePagesController < ApplicationController
   def admin
     @site_pages = SitePage.order(created_at: :asc).all
     @posts = Post.all.order(created_at: :desc)
+    @projects = Project.all.order(created_at: :desc)
   end
 
   # GET /site_pages/1
