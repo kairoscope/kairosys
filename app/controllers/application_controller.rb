@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     end
     
     def project_list
-      @project_list = Project.all
+      if current_user.try(:admin?)
+        @project_list = Project.all.order(created_at: :asc)
+      else
+        @project_list = Project.find_all_by_visibility("public").order(created_at: :asc)
+      end
     end
 end

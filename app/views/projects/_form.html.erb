@@ -13,23 +13,27 @@
 	
 	<div class="row-fluid">
 		<div class="form-group span3">
-		    <%= f.input :name, input_html:{class:'form-control'} %>
+		    <%= f.input :name, input_html:{class:'form-control span12'} %>
 		</div>
 	
-		<div class="form-group span3">
-		    <%= f.input :slug, input_html:{class:'form-control'} %>
+		<div class="form-group span2">
+		    <%= f.input :slug, input_html:{class:'form-control span12'} %>
 		</div>
 	
 		<div class="form-group span4">
 		    <%= f.input :description, input_html:{class:'form-control span12'} %>
 		</div>
 		
-	    <div class="form-group span2" style="margin-top: 25px; text-align: right;">
+	    <div class="form-group span2">
+	      <%= f.input :visibility, collection: ["public", "private"], class:'btn btn-success', selected:  f.object.visibility || 'public', input_html: { class: 'input-small' } %>
+	    </div>
+		
+	    <div class="form-group span1" style="margin-top: 25px; text-align: right; margin-left: -30px;">
 	      <%= f.button :submit, class:'btn btn-success' %>
 	    </div>
 	</div>
 	
-	<%= f.input :content, :label => false, input_html:{class:'summernote codemirror'} %>
+	<%= f.input :content, :label => false, input_html:{class:'summernote codemirror span12'} %>
 
 	
 <% end %>
