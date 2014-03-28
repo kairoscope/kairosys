@@ -1,35 +1,35 @@
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<%= simple_form_for(@project) do |f| %>
+	<% if @project.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+	
+	<div class="row-fluid">
+		<div class="form-group span3">
+		    <%= f.input :name, input_html:{class:'form-control'} %>
+		</div>
+	
+		<div class="form-group span3">
+		    <%= f.input :slug, input_html:{class:'form-control'} %>
+		</div>
+	
+		<div class="form-group span4">
+		    <%= f.input :description, input_html:{class:'form-control span12'} %>
+		</div>
+		
+	    <div class="form-group span2" style="margin-top: 25px; text-align: right;">
+	      <%= f.button :submit, class:'btn btn-success' %>
+	    </div>
+	</div>
+	
+	<%= f.input :content, :label => false, input_html:{class:'summernote codemirror'} %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :slug %><br>
-    <%= f.text_field :slug %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	
 <% end %>

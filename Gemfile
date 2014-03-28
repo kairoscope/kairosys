@@ -33,11 +33,16 @@ end
 gem 'coffee-rails', '~> 4.0.0' # Use CoffeeScript for .js.coffee assets and views
 gem "therubyracer" 
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'flatstrap-rails'
 
 gem 'devise'
 gem 'friendly_id'
+gem 'simple_form'
+gem 'summernote-rails'
 
 gem 'rails_12factor', group: :production
 
