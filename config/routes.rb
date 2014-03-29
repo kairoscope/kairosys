@@ -10,7 +10,7 @@ KairoscopeSys::Application.routes.draw do
   get 'contato/editar' => 'site_pages#edit_contato'
   resources :site_pages
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   get 'posts/list' => 'posts#list'
   
   resources :posts, :path => :blog
