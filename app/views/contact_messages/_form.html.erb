@@ -1,0 +1,13 @@
+<%= simple_form_for @contact_message, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <div class="form-group xlarge">
+	  <%= f.input :email, label: "Seu email", input_html:{class:'form-control span12'} %>
+  </div>
+  <div class="form-group xlarge">
+  	<%= f.input :message, label: "Mensagem", input_html:{class:'form-control span12', rows: '10'} %>
+  </div>
+  <div class="centered" style="margin-top: 20px;">
+    <%= f.button :submit, "Enviar", :class => 'btn-success' %>
+  </div>
+
+<% end %>

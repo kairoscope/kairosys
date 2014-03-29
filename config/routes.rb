@@ -1,12 +1,14 @@
 KairoscopeSys::Application.routes.draw do
   
+  resources :contact_messages, :path => 'contato/mensagens'
+
   resources :projects, :path => :projetos
 
   get 'credentials' => 'site_pages#credentials'
   get 'admin' => 'site_pages#admin'
   get 'sobre' => 'site_pages#sobre'
   get 'sobre/editar' => 'site_pages#edit_sobre'
-  get 'contato' => 'site_pages#contato'
+  get 'contato' => 'contact_messages#new'
   get 'contato/editar' => 'site_pages#edit_contato'
   resources :site_pages
 

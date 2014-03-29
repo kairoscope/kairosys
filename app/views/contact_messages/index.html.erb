@@ -1,0 +1,31 @@
+<%- model_class = ContactMessage -%>
+<div class="page-header">
+  <h2>Mensagens Recebidas</h2>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:message) %></th>
+      <th>Created</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contact_messages.each do |contact_message| %>
+      <tr>
+        <td><%= contact_message.email %></td>
+        <td><%= contact_message.message %></td>
+        <td><%= time_ago_in_words(contact_message.created_at)  %> ago</td>
+        <td>
+          <%= link_to "Ler", contact_message_path(contact_message), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      contact_message_path(contact_message),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
