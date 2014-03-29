@@ -22,7 +22,7 @@ class SitePagesController < ApplicationController
 
   def sobre
     @site_page = SitePage.find(1)
-    @users = User.find_all_by_team_member("true")
+    @users = User.order(created_at: :asc).find_all_by_team_member("true")
   end
   
   def edit_sobre
