@@ -1,20 +1,40 @@
-<%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :content, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :content, :class => 'text_field' %>
-    </div>
-  </div>
+<%= simple_form_for(@post) do |f| %>
+	<% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                posts_path, :class => 'btn' %>
-  </div>
+        <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+	
+	<div class="row-fluid">
+		<div class="form-group span6">
+		    <%= f.input :title, input_html:{class:'form-control span12'} %>
+		</div>
+		
+		<div class="form-group span6">
+		    <%= f.input :cover_image_url, input_html:{class:'form-control span12'} %>
+		</div>
+		
+	</div>
+	
+	<div class="row-fluid">
+		<div class="form-group span12">
+		    <%= f.input :description, input_html:{class:'form-control span12'} %>
+		</div>
+	</div>
+	
+	<%= f.input :content, :label => false, input_html:{class:'summernote codemirror span12'} %>
+	
+	<hr>
+	<div class="row-fluid">
+    	<div style="text-align: center;">
+     	   <%= f.button :submit, "Salvar", class:'btn btn-success' %>
+   		</div>
+    </div>
+	
 <% end %>
