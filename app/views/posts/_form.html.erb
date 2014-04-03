@@ -28,7 +28,13 @@
 		</div>
 	</div>
 	
-	<%= f.input :content, :label => false, input_html:{class:'summernote codemirror span12'} %>
+	<div class="row-fluid">
+		<div class="form-group span12">
+		    <%= f.input :image_url, input_html:{class:'form-control span12'} %>
+		</div>
+	</div>
+	
+	<%= f.input :content, :label => false, input_html:{class:'summernote span12'} %>
 	
 	<hr>
 	<div class="row-fluid">

@@ -3,12 +3,14 @@
 <% if @post.image_url %>
 	<img src="<%= @post.image_url %>" alt="">
 <% end %>
-<div class="page-header">
+<div class="page-header" style="text-align: center; margin-top: 30px; padding-bottom: 5px;">
   <h1><%= @post.title %></h1>
+  <small><%= time_ago_in_words(@post.created_at) %> ago</small>
 </div>
 
+
 <div>
-<%= @post.content %>
+<%= @post.content.html_safe %>
 </div>
 
 
