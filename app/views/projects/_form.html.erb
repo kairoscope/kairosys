@@ -12,28 +12,43 @@
     <% end %>
 	
 	<div class="row-fluid">
-		<div class="form-group span3">
-		    <%= f.input :name, input_html:{class:'form-control span12'} %>
-		</div>
-	
-		<div class="form-group span2">
-		    <%= f.input :slug, input_html:{class:'form-control span12'} %>
-		</div>
-	
-		<div class="form-group span4">
-		    <%= f.input :description, input_html:{class:'form-control span12'} %>
+		
+		<div class="form-group span9">
+			
+				<%= f.input :content, :label => false, input_html:{class:'summernote span12'} %>
+		
 		</div>
 		
-	    <div class="form-group span2">
-	      <%= f.input :visibility, collection: ["public", "private"], class:'btn btn-success', selected:  f.object.visibility || 'public', input_html: { class: 'input-small' } %>
-	    </div>
+		<div class="form-group span3 bg-grey">
+			<div class="form-group ">
+			    <%= f.input :name, input_html:{class:'form-control '} %>
+			</div>
+
+			<div class="form-group ">
+			    <%= f.input :slug, input_html:{class:'form-control '} %>
+			</div>
+		    <div class="form-group">
+		      <%= f.input :thumbnail_url, input_html: { class: 'input' } %>
+		    </div>
+			<div class="form-group">
+			    <%= f.input :description, input_html:{class:'form-control input-text', rows: '3'} %>
+			</div>
+		    <div class="form-group">
+		      <%= f.input :visibility, collection: ["public", "private"], class:'btn btn-success', selected:  f.object.visibility || 'public', input_html: { class: 'input' } %>
+		    </div>
+		    <div class="form-group">
+		      <%= f.input :sidebar, input_html: { class: 'input-text', rows: '18' } %>
+		    </div>
+		</div>
 		
-	    <div class="form-group span1" style="margin-top: 25px; text-align: right; margin-left: -30px;">
-	      <%= f.button :submit, class:'btn btn-success' %>
-	    </div>
 	</div>
 	
-	<%= f.input :content, :label => false, input_html:{class:'summernote span12'} %>
+	<div class="row-fluid" style="margin-top: 20px;">
+    	<div style="text-align: center;">
+      	  <%= f.button :submit, class:'btn btn-success' %>
+		</div>
+    </div>
+	
 
 	
 <% end %>

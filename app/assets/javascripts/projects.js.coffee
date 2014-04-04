@@ -1,3 +1,5 @@
+
+
 $ ->
 	
   # to set summernote object
@@ -29,3 +31,4 @@ $ ->
     # alert $('#post_content').code()
     summer_note.val summer_note.code()
     true
+	

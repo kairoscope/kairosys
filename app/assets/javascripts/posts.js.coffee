@@ -7,7 +7,7 @@ $ ->
   # to call summernote editor
   summer_note.summernote
     # to set options
-    height:540
+    height:500
     #lang: 'pt-BR'
     #toolbar: [
                 # ['insert', ['picture', 'link']], // no insert buttons
