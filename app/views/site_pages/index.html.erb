@@ -3,7 +3,9 @@
 		
 		    <div class="thumbnail">
 				<% feature_image = @site_pages[2].content %>
-				<%= image_tag(feature_image) %>
+				<a href="<%= @site_pages[4].content %>">
+					<%= image_tag(feature_image) %>
+				</a>
 
 			  <div class="thumbnail-content">
 		      	<p><%= @site_pages[3].content %></p>

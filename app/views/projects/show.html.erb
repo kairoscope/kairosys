@@ -1,10 +1,10 @@
+<% if @project.sidebar != nil %>
+	<div class="span9"><%= @project.content.html_safe %></div>
+<% else %>
+	<div class="span12"><%= @project.content.html_safe %></div>
+<% end %>
 
-<div class="span9">
-	
-	<%= @project.content.html_safe %>
-</div>
-
-
+<% if @project.sidebar != nil %>
 	<div class="span3" >
 	<div data-spy="affix" data-offset-top="0" data-offset-right="0" class="gray-box" style="max-width: 203px; margin-right: 20px;">
 		<div class="thumbnail" style="margin-bottom: 15px;">
@@ -15,3 +15,4 @@
 		</div>
 	</div>
 </div>
+<% end %>
