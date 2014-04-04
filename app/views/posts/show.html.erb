@@ -5,7 +5,7 @@
 <% end %>
 <div class="page-header" style="text-align: center; margin-top: 30px; padding-bottom: 5px;">
   <h1><%= @post.title %></h1>
-  <small><%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.full_name %></small>
+  <small><%= time_ago_in_words(@post.created_at) %> atrás por <%= @post.user.full_name %></small>
 </div>
 
 
@@ -17,6 +17,5 @@
 
 
 <div style="text-align: center; margin-top: 15px; margin-bottom: 25px;">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              posts_path, :class => 'btn'  %>
+  <%= link_to "voltar", posts_path, :class => 'btn'  %>
 </div>

@@ -27,6 +27,8 @@ KairoscopeSys::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
+  I18n.locale = "pt-BR"
+  
   # and don't forget the other environments
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
