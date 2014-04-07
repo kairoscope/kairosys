@@ -29,7 +29,7 @@ class ContactMessagesController < ApplicationController
 
     respond_to do |format|
       if @contact_message.save
-        format.html { redirect_to @contact_message, notice: 'Contact message was successfully created.' }
+        format.html { redirect_to contato_path, notice: 'Sua mensagem foi enviada com sucesso!' }
         format.json { render action: 'show', status: :created, location: @contact_message }
       else
         format.html { render action: 'new' }
